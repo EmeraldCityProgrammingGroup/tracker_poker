@@ -1,5 +1,7 @@
 TrackerPoker::Application.routes.draw do
 
+  devise_for :users
+
   match "about" => "page#about", :as => :about
 
   match "contact" => "page#contact", :as => :contact
