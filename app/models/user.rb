@@ -9,4 +9,5 @@ class User < ActiveRecord::Base
   
   has_many :pivotal_users
   has_and_belongs_to_many :rooms 
+  has_many :story_votes 
 end
