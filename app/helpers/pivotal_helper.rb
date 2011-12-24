@@ -1,0 +1,2 @@
+module PivotalHelper
+end
