@@ -1,5 +1,9 @@
 TrackerPoker::Application.routes.draw do
 
+  get "pivotal/login"
+
+  get "pivotal/projects"
+
   devise_for :users
 
   match "about" => "page#about", :as => :about
