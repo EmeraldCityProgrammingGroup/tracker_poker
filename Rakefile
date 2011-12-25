@@ -5,3 +5,6 @@
 require File.expand_path('../config/application', __FILE__)
 
 TrackerPoker::Application.load_tasks
+
+task(:default).clear
+task :default => :spec
