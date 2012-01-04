@@ -1,8 +1,9 @@
 TrackerPoker::Application.routes.draw do
 
-  get "pivotal/login"
+  match "pivotal" => "pivotal#index", :as => :pivotal
+  match "pivotal/login" => "pivotal#login", :as => :pivotal_login
 
-  get "pivotal/projects"
+  match "pivotal/projects" => "pivotal#projects", :as => :pivotal_projects
 
   devise_for :users
 
