@@ -21,5 +21,12 @@ class PivotalController < ApplicationController
   def projects
     @projects = PivotalTracker::Project.all 
   end
+  
+  def stories 
 
+    @project = PivotalTracker::Project.find(params[:project_id].to_i)
+    @stories = @project.stories.all :current_state=>"unscheduled"
+  end
+  
+  
 end

@@ -1,6 +1,6 @@
 <div class="grid_15"><h1>Select Pivotal Project</h1></div>
 <% @projects.each do |project| %>
-<div class="prefix_1 grid_5"><h2> <%= "#{project.name} (#{project.id})" %></h2></div>
+<div class="prefix_1 grid_5"><h2> <%= link_to "#{project.name} (#{project.id})", project_story_path(:project_id => project.id) %></h2></div>
 <div class="clear"></div>
 <% end %>
     
