@@ -27,7 +27,7 @@ class PivotalController < ApplicationController
     list_stories "unstarted"
     
   end
-  def ice_stories
+  def ice_box
     list_stories "unscheduled"
     render "stories"
   end
