@@ -1,5 +1,11 @@
 TrackerPoker::Application.routes.draw do
 
+  match "pivotal" => "pivotal#index", :as => :pivotal
+  match "pivotal/login" => "pivotal#login", :as => :pivotal_login
+  match "pivotal/project/:project_id/stories" => "pivotal#stories", :as => :project_story
+  match "pivotal/project/:project_id/ice_box" => "pivotal#ice_box", :as => :project_ice_box
+  match "pivotal/projects" => "pivotal#projects", :as => :pivotal_projects
+
   devise_for :users
 
   match "about" => "page#about", :as => :about
