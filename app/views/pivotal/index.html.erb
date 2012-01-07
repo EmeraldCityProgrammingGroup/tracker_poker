@@ -1,0 +1,9 @@
+<div class="grid_16"><h1>Please Log-in to your Pivotal account</h1></div>
+<%= form_tag :action => :login do %>
+  <div class="grid_2"><label>User Name:</label></div>
+  <div class="grid_3"><%= text_field_tag :user_name %></div>
+  <div class="clear" ></div>
+  <div class="grid_2"><label>Password:</label></div>
+  <div class="grid_3"><%= password_field_tag :password %></div>
+  <div class="grid_5"><div align="center"><%= submit_tag :Login %></div></div>
+<% end %>

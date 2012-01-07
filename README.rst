@@ -5,9 +5,9 @@ Tracker_Poker
 repo   :: https://github.com/EmeraldCityProgrammingGroup/tracker_poker
 heroku :: http://tracker-poker.herokuapp.com/
 
-===========
+
 DESCRIPTION
-===========
+------------
 
 Tracker_Poker is a way to automate the planning poker 
 meeting on an Agile project using a mobile phone.
@@ -15,21 +15,21 @@ meeting on an Agile project using a mobile phone.
 Tracker_Poker is still in early development, so now 
 is the time to make your mark on the project.
 
-=================
+
 FEATURES/PROBLEMS
-=================
+------------------
 
 * TBD
 
-========
+
 SYNOPSYS
-========
+---------
 
 * % TBD/USAGE
 
-=======
+
 INSTALL
-=======
+---------
 
     # Checkout the project
     $ git clone git://github.com/EmeraldCityProgrammingGroup/tracker_poker
@@ -50,9 +50,9 @@ INSTALL
 
     You should then be able to navigate to `http://localhost:3000/` in a web browser.
 
-=============
+
 HERKOKU SETUP
-=============
+---------------
 
     If you wish to host a publicly available copy of Tracker_Poker,
     the easiest option is to host it on [Heroku](http://heroku.com/).
@@ -82,9 +82,9 @@ HERKOKU SETUP
     Once that's done, you will be able to view your site at 
     `http://APPNAME.heroku.com`.
 
-=============
+
 TO CONTRIBUTE
-=============
+----------------
 
 Tracker_Poker is currently welcoming contributions.  If you'd like to help:
 
@@ -122,19 +122,20 @@ Here are some general guidelines for contributing:
 
 * Also attend the <emerald city> Saturday classes.
 
-=======
+
 LICENSE
-=======
+---------
 
 * **Please put your open source license here.**
 * **If you need help, check out this: http://www.opensource.org/licenses **
 
-=============
+
 README FORMAT
-=============
+--------------
 
 See http://docutils.sourceforge.net/docs/user/rst/quickref.html
 for more information about the format used in the file. It is 
 called **Restructured Text**.
+
 
 
