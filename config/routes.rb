@@ -12,6 +12,12 @@ TrackerPoker::Application.routes.draw do
 
   match "contact" => "page#contact", :as => :contact
 
+  resources :room do
+    resources :story do
+      post 'vote', :on => :member
+      get 'votes', :on => :member
+    end
+  end
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
