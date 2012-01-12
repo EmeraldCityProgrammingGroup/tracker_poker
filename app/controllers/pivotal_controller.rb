@@ -11,11 +11,12 @@ class PivotalController < ApplicationController
     password = params[:password]
     PivotalTracker::Client.token = nil
     token = PivotalTracker::Client.token(username, password)   
-    current_user.pivotal_users.create :token => token
+    
     unless token.nil?
+      current_user.pivotal_users.create :token => token
       redirect_to :pivotal_projects
     else
-      redirect_to :povital
+      redirect_to :pivotal
     end
   end
 
