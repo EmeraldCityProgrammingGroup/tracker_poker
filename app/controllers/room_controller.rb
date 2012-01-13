@@ -4,7 +4,7 @@ class RoomController < PivotalController
   end
 
   def create
-    @room = Room.new :project_id => params[:project_id]
+    @room = Room.new :project_id => params[:project_id], :current_story_id => -1
     if @room.save
       redirect_to room_path(:id => @room.id), :notice => "Room created successfully"
     else
@@ -29,6 +29,8 @@ class RoomController < PivotalController
   end
   
   def active_story
+    @room = Room.find(params[:id])
+    render :json => @room.current_story_ids
   end
   
 

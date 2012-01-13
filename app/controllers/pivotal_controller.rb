@@ -32,8 +32,8 @@ class PivotalController < ApplicationController
   # end 
   protected 
   
-  def list_stories(state)
-    @project = PivotalTracker::Project.find(params[:project_id].to_i)
+  def list_stories(project_id, state)
+    @project = PivotalTracker::Project.find(project_id.to_i)
     # @stories = @project.stories.all( :current_state=>"unscheduled").map{|x| x if x.estimate == -1}.compact
     @stories = @project.stories.all( :current_state=> state) # list stories moved out of the icebox
     @active_count = @stories.size
