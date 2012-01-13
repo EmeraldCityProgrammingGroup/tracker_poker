@@ -17,6 +17,7 @@ TrackerPoker::Application.routes.draw do
       post 'vote', :on => :member
       get 'votes', :on => :member
     end
+    get 'active_story', :on => :member
   end
   # The priority is based upon order of creation:
   # first created -> highest priority.
