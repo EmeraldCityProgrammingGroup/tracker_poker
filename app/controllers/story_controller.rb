@@ -1,4 +1,4 @@
-class StoryController < ApplicationController
+class StoryController < PivotalController
   def new
   end
 
@@ -15,9 +15,18 @@ class StoryController < ApplicationController
   end
 
   def index
+    
   end
 
   def show
   end
-
+  
+  def vote
+  end
+  
+  def votes
+  end
+  
+  def open_voting
+  end
 end

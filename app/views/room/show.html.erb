@@ -1,2 +1,2 @@
-<h1>Room#show</h1>
-<p>Find me in app/views/room/show.html.erb</p>
+<div class="grid_16"><h1>Room #<%= @room.id%></h1></div>
+<div class="grid_16"><div align="center"><%= image_tag get_qr_url(@room.id)%></div></div>
