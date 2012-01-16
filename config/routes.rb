@@ -17,6 +17,8 @@ TrackerPoker::Application.routes.draw do
       post 'vote', :on => :member
       get 'votes', :on => :member
       get 'open_voting', :on => :member
+      get 'close_voting', :on => :member
+      get 'status_voting', :on => :member
       get 'icebox', :on => :collection
     end
     get 'active_story', :on => :member

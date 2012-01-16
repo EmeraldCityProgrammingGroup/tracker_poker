@@ -7,3 +7,4 @@
 <div class="clear"></div>
 <div class="prefix_2 grid_10"><p><%= @story.description %></p></div>
 <div class="clear"></div>
+<div class="prefix_2 grid_4"><%= link_to "Open Voting", open_voting_room_story_path(:id => @story.id), :remote=> true %></div>

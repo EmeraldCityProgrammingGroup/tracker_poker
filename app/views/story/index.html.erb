@@ -4,15 +4,6 @@
 <div class="grid_5"><p><%= "Unestimated Stories: #{@unestimated_count}"%></p></div>
 <div class="clear"></div>
 <% @stories.each do |story| %>
-<div class="prefix_1 grid_11"><h2> <%= "#{story.name} (#{story.id})" %></h2></div>
-<div class="clear"></div>
-<div class="prefix_2 grid_4"><p><%= "Points: #{story.estimate}" %></p></div>
-<div class="grid_4"><p><%= "Status: #{story.current_state}" %></p></div>
-<div class="clear"></div>
-<div class="prefix_2 grid_10"><p><%= "Labels: #{story.labels}" %></p></div>
-<div class="clear"></div>
-<div class="prefix_2 grid_10"><p><%= story.description %></p></div>
-<div class="clear"></div>
-<div class="prefix_1 grid_11"><hr /></div>
+<div class="prefix_1 grid_11"><h2> <%= link_to "#{story.name} (#{story.id})", room_story_path(:id => story.id) %></h2></div>
 <div class="clear"></div>
 <% end %>

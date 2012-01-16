@@ -30,8 +30,11 @@ class RoomController < PivotalController
   
   def active_story
     @room = Room.find(params[:id])
-    render :json => @room.current_story_ids
+    render :json => @room.current_story_id
   end
   
+  def join
+    
+  end
 
 end
