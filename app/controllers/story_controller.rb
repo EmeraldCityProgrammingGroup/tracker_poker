@@ -1,4 +1,6 @@
 class StoryController < PivotalController
+  skip_before_filter :confirm_pivotal!, :only => [:vote]
+  
   def new
   end
 

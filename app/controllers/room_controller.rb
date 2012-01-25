@@ -1,4 +1,5 @@
 class RoomController < PivotalController
+  skip_before_filter :confirm_pivotal!, :only => [:active_story, :join]
   def new
     @projects = PivotalTracker::Project.all 
   end
@@ -34,7 +35,10 @@ class RoomController < PivotalController
   end
   
   def join
+    @room = Room.find(params[:id])
+    @user = User.find(params[:email])
     
+    render :text => "success"
   end
 
 end

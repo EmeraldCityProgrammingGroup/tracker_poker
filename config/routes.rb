@@ -1,5 +1,11 @@
 TrackerPoker::Application.routes.draw do
 
+  get "token/index"
+
+  get "token/create"
+
+  get "token/delete"
+
   match "pivotal" => "pivotal#login_pivotal", :as => :pivotal
   match "pivotal/login" => "pivotal#auth_pivotal", :as => :pivotal_login
   # match "pivotal/project/:project_id/stories" => "pivotal#stories", :as => :project_story
