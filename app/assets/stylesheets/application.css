@@ -5,6 +5,7 @@
  *= require reset
  *= require text
  *= require 960
+ *= require overcast/jquery-ui
  *= require_self
  *= require_tree . 
 */

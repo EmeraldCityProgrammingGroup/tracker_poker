@@ -36,7 +36,7 @@ class RoomController < PivotalController
   
   def join
     @room = Room.find(params[:id])
-    @user = User.find(params[:email])
+    @room.users << current_user
     
     render :text => "success"
   end

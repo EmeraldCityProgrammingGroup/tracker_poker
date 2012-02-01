@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120116211443) do
+ActiveRecord::Schema.define(:version => 20120126051418) do
 
   create_table "pivotal_users", :force => true do |t|
     t.integer  "user_id"
@@ -20,16 +20,16 @@ ActiveRecord::Schema.define(:version => 20120116211443) do
     t.datetime "updated_at"
   end
 
-  create_table "room_users", :force => true do |t|
-    t.integer "room_id"
-    t.integer "user_id"
-  end
-
   create_table "rooms", :force => true do |t|
     t.integer  "project_id"
     t.integer  "current_story_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "rooms_users", :force => true do |t|
+    t.integer "room_id"
+    t.integer "user_id"
   end
 
   create_table "sessions", :force => true do |t|

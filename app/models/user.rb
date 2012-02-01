@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
   has_many :story_votes 
   
   def self.authenticate(username, password)
-    user = User.find_for_authentication(:username => username)
+    user = User.find_for_authentication(:email => username)
     user.valid_password?(password) ? user : nil
   end
   

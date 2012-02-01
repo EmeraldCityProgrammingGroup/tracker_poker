@@ -1,11 +1,5 @@
 TrackerPoker::Application.routes.draw do
 
-  get "token/index"
-
-  get "token/create"
-
-  get "token/delete"
-
   match "pivotal" => "pivotal#login_pivotal", :as => :pivotal
   match "pivotal/login" => "pivotal#auth_pivotal", :as => :pivotal_login
   # match "pivotal/project/:project_id/stories" => "pivotal#stories", :as => :project_story
@@ -17,7 +11,9 @@ TrackerPoker::Application.routes.draw do
   match "about" => "page#about", :as => :about
 
   match "contact" => "page#contact", :as => :contact
-
+  resources :token, :only =>[:create, :delete] do
+    post "fetch", :on => :collection
+  end
   resources :room do
     resources :story do
       post 'vote', :on => :member
@@ -28,7 +24,7 @@ TrackerPoker::Application.routes.draw do
       get 'icebox', :on => :collection
     end
     get 'active_story', :on => :member
-    post 'join', :on => :member
+    get 'join', :on => :member
   end
   # The priority is based upon order of creation:
   # first created -> highest priority.
