@@ -1,0 +1,10 @@
+<p>Average vote <%= @avg_score %></p>
+<%= form_tag room_story_path(:room_id =>@room.id, :id => @story_id), :method=> :put do  %>
+<p>Estimate for story <%= select_tag 'estimate', options_for_select(@range, :selected => @estimated_score)%></p>
+<%= submit_tag %>
+<% end %>
+<ul>
+<% @votes.each do |vote| %>
+<li><%= "#{vote.user.email}(#{vote.score})" %></li>
+<% end %>
+</ul>

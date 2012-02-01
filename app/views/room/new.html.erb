@@ -1,0 +1,6 @@
+<div class="grid_15"><h1>Select project to use for room.</h1></div>
+<%= form_tag room_index_path, :method => :post do %>
+<div class="prefix_1 grid_5"><%= select_tag :project_id, options_from_collection_for_select(@projects, "id", "name")%></div>
+<div class="grid_15"><p align=center><%= submit_tag "Create Room"%>
+<% end %>
+

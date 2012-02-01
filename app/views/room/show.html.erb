@@ -1,0 +1,5 @@
+<div class="grid_16"><h1>Room #<%= @room.id%></h1></div>
+<div class="prefix_3 grid_4"><%= link_to "Active Stories", room_story_index_path(:room_id => @room.id) %></div>
+<div class="grid_4"><%= link_to "Icebox Stories", icebox_room_story_index_path(:room_id => @room.id) %></div>
+<div class="clear"></div>
+<div class="grid_16"><div align="center"><%= image_tag get_qr_url(@room.id)%></div></div>

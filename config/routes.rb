@@ -1,17 +1,31 @@
 TrackerPoker::Application.routes.draw do
 
-  match "pivotal" => "pivotal#index", :as => :pivotal
-  match "pivotal/login" => "pivotal#login", :as => :pivotal_login
-  match "pivotal/project/:project_id/stories" => "pivotal#stories", :as => :project_story
-  match "pivotal/project/:project_id/ice_box" => "pivotal#ice_box", :as => :project_ice_box
-  match "pivotal/projects" => "pivotal#projects", :as => :pivotal_projects
+  match "pivotal" => "pivotal#login_pivotal", :as => :pivotal
+  match "pivotal/login" => "pivotal#auth_pivotal", :as => :pivotal_login
+  # match "pivotal/project/:project_id/stories" => "pivotal#stories", :as => :project_story
+  # match "pivotal/project/:project_id/ice_box" => "pivotal#ice_box", :as => :project_ice_box
+  # match "pivotal/projects" => "pivotal#projects", :as => :pivotal_projects
 
   devise_for :users
 
   match "about" => "page#about", :as => :about
 
   match "contact" => "page#contact", :as => :contact
-
+  resources :token, :only =>[:create, :delete] do
+    post "fetch", :on => :collection
+  end
+  resources :room do
+    resources :story do
+      post 'vote', :on => :member
+      get 'votes', :on => :member
+      get 'open_voting', :on => :member
+      get 'close_voting', :on => :member
+      get 'status_voting', :on => :member
+      get 'icebox', :on => :collection
+    end
+    get 'active_story', :on => :member
+    get 'join', :on => :member
+  end
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
