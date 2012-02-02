@@ -3,7 +3,7 @@ require 'digest/md5'
 
 
 describe PivotalController do
-  include Devise::TestHelpers
+  
   
   before(:each) do
     user = Factory(:user)

@@ -8,6 +8,21 @@ require 'rspec/autorun'
 # in spec/support/ and its subdirectories.
 Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 
+module ControllerHelpers
+  def sign_in(user_id = 1)
+    user = User.find user_id
+    if user.nil?
+      request.env['warden'].stub(:authenticate!).
+        and_throw(:warden, {:scope => :user})
+      controller.stub :current_user => nil
+    else
+      request.env['warden'].stub :authenticate! => user
+      controller.stub :current_user => user
+    end
+  end
+end
+
+
 RSpec.configure do |config|
   # == Mock Framework
   #
@@ -30,4 +45,7 @@ RSpec.configure do |config|
   # automatically. This will be the default behavior in future versions of
   # rspec-rails.
   config.infer_base_class_for_anonymous_controllers = false
+  
+  config.include Devise::TestHelpers, :type => :controller
+  # config.include ControllerHelpers, :type => :controller
 end

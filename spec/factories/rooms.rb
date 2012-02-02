@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :room do
-    project_id 1
-    current_story_id 1
+    project_id 12345
+    current_story_id -1
   end
 end
