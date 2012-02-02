@@ -20,7 +20,6 @@ describe PivotalController do
 
   describe "POST 'auth_pivotal'" do
     before(:each) do
-      
       request.session = {:last_path => root_url }
     end
     
