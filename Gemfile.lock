@@ -62,6 +62,11 @@ GEM
     eventmachine (0.12.10)
     execjs (1.2.9)
       multi_json (~> 1.0)
+    factory_girl (2.5.0)
+      activesupport
+    factory_girl_rails (1.6.0)
+      factory_girl (~> 2.5.0)
+      railties (>= 3.0.0)
     haml (3.1.4)
     happymapper (0.4.0)
       libxml-ruby (~> 2.0)
@@ -175,6 +180,7 @@ PLATFORMS
 DEPENDENCIES
   coffee-rails (~> 3.1.1)
   devise
+  factory_girl_rails
   jquery-rails
   mailcatcher
   pg

@@ -24,6 +24,7 @@ end
 group :development, :test do
   gem 'mailcatcher'
   gem 'rspec-rails'
+  gem 'factory_girl_rails'
   gem 'sqlite3'
 end
 
