@@ -9,9 +9,9 @@ class PivotalController < ApplicationController
     username = params[:user_name]
     password = params[:password]
     PivotalTracker::Client.token = nil
-    token = PivotalTracker::Client.token(username, password)   
-    current_user.pivotal_users.create :token => token
+    token = PivotalTracker::Client.token(username, password) 
     unless token.nil?
+      current_user.pivotal_users.create :token => token
       redirect_to session[:last_path]
     else
       redirect_to :pivotal, :notice => "Login Failed"
