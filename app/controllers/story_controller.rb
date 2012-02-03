@@ -73,12 +73,12 @@ class StoryController < PivotalController
   def status_voting
     @room = Room.find(params[:room_id])
     @votes = @room.story_votes.where(:story_id => params[:id])
-    counts = @votes.count
-    users = @room.users.count
-    precentage = counts.to_f / users.to_f * 100.0
-    puts "Votes: #{counts} Users: #{users} Precentage: #{precentage}"
+    @counts = @votes.count
+    @users = @room.users.count
+    @precentage = @counts.to_f / @users.to_f * 100.0
+    puts "Votes: #{@counts} Users: #{@users} Precentage: #{@precentage}"
     data = {}
-    data[:value] = precentage
+    data[:value] = @precentage
     # data[:total_vote_count] = @room.users.count
     render :json => data.as_json
   end
