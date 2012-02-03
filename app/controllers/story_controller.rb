@@ -15,7 +15,7 @@ class StoryController < PivotalController
     if @story.update
       redirect_to room_story_index_url(:room_id => room_id), :notice => "Story #{@story.id} saved successful."
     else
-      redirect_to room_story_url(:id => story.id, :room_id => room_id) , :notice => "Could not save estimate"
+      redirect_to room_story_url(:id => @story.id, :room_id => room_id) , :notice => "Could not save estimate"
     end
   end
 
