@@ -76,7 +76,7 @@ class StoryController < PivotalController
     @counts = @votes.count
     @users = @room.users.count
     @precentage = @counts.to_f / @users.to_f * 100.0
-    puts "Votes: #{@counts} Users: #{@users} Precentage: #{@precentage}"
+    # puts "Votes: #{@counts} Users: #{@users} Precentage: #{@precentage}"
     data = {}
     data[:value] = @precentage
     # data[:total_vote_count] = @room.users.count

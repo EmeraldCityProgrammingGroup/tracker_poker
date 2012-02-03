@@ -10,6 +10,7 @@ describe StoryController do
       p = PivotalTracker::Project.new
       p.id = 12345 
       p.name = "Hello World"
+      p.point_scale = "0,1,2,3,5,8,13,20,40,100"
       p
     end
     @story = PivotalTracker::Story.new(:id => 1, :name=>"unstarted 1", 
@@ -99,26 +100,77 @@ describe StoryController do
   
   # vote
   describe "Post 'vote'" do
-    it "should store a users vote"
-    it "should update a vote if already voted on this story"
+    it "should store a users vote" do
+      StoryVote.any_instance.should_receive(:create)#.with({"user_id" => @user.id, "story_id" => @story.id, "score" => 8})
+      post "vote", :auth_token => @user.authentication_token, :score => 8, :room_id => @room.id, :id=> @story.id
+      response.response_code.should == 200
+      response.body.should == "success"
+    end
+    it "should update a vote if already voted on this story" do
+      3.times do |x|
+        post "vote", :auth_token => @user.authentication_token, :score => x, :room_id => @room.id, :id=> @story.id
+      end
+      StoryVote.where(:story_id => @story.id, :room_id => @room.id).count.should == 1
+    end
   end
   # votes
   describe "GET 'votes'" do
-    it "should list all votes for a given story"
-    it "should calculate the average score on a given story"
-    it "should calculate the estimated points for this story"
+    before(:each) do
+      sign_in @user
+      3.times do |x|
+        user_x = Factory(:user, :authentication_token =>Digest::MD5.hexdigest("User #{x}\n"))
+        post "vote", :auth_token => user_x.authentication_token, :score => x, :room_id => @room.id, :id=> @story.id
+      end
+    end
+    it "should list all votes for a given story" do 
+      get 'votes', :room_id => @room.id, :id=> @story.id
+      assigns[:votes].count.should == 3
+    end
+    it "should calculate the average score on a given story" do
+      get 'votes', :room_id => @room.id, :id=> @story.id
+      assigns[:avg_score].should == 1
+    end
+    it "should calculate the estimated points for this story" do
+      get 'votes', :room_id => @room.id, :id=> @story.id
+      assigns[:estimated_score].should == "1"
+    end
   end
   # open_voting
   describe "GET 'open_voting'" do
-    it "should set the current_story_id on the room to the current story"
+    before(:each) do
+      sign_in @user
+    end
+    it "should set the current_story_id on the room to the current story" do
+      get 'open_voting', :room_id => @room.id, :id=> @story.id, :format => "js"
+      response.response_code.should == 200
+      Room.find(@room.id).current_story_id.should == @story.id
+    end
   end
   # close_voting
   describe "GET 'close_voting'"do 
-    it "should set the current_story_id on the room to -1"
+    before(:each) do
+      sign_in @user
+    end
+    it "should set the current_story_id on the room to -1"do
+      get 'close_voting', :room_id => @room.id, :id=> @story.id, :format => "js"
+      response.response_code.should == 200
+      Room.find(@room.id).current_story_id.should == -1
+    end
   end
   # status_voting
   describe "GET 'status_voting'" do
-    it "should get the precentage of votes vs registered users in room"
+    before(:each) do
+      sign_in @user
+    end
+    it "should get the precentage of 0 votes in room"do
+      get 'status_voting', :room_id => @room.id, :id=> @story.id
+      assigns[:precentage].should == 0
+    end
+    it "should return presentage of 100 with a vote submited" do
+      post "vote", :auth_token => @user.authentication_token, :score => 8, :room_id => @room.id, :id=> @story.id
+      get 'status_voting', :room_id => @room.id, :id=> @story.id
+      assigns[:precentage].should == 100
+    end
   end
   
   
