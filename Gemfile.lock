@@ -194,4 +194,5 @@ DEPENDENCIES
   sass-rails (~> 3.1.4)
   simplecov
   sqlite3
+  thin
   uglifier (>= 1.0.3)
