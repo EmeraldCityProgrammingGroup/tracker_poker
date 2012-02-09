@@ -1,5 +1,7 @@
 TrackerPoker::Application.routes.draw do
 
+  get "play/index", :as => :play
+
   match "pivotal" => "pivotal#login_pivotal", :as => :pivotal
   match "pivotal/login" => "pivotal#auth_pivotal", :as => :pivotal_login
   # match "pivotal/project/:project_id/stories" => "pivotal#stories", :as => :project_story
@@ -9,7 +11,7 @@ TrackerPoker::Application.routes.draw do
   devise_for :users
 
   match "about" => "page#about", :as => :about
-
+  match "apps" => "page#apps", :as => :apps
   match "contact" => "page#contact", :as => :contact
   resources :token, :only =>[:create, :delete] do
     post "fetch", :on => :collection

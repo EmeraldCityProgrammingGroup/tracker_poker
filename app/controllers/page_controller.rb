@@ -10,5 +10,7 @@ class PageController < ApplicationController
   def contact
     @title = "Contact us"
   end
-
+  def apps
+    @title = "Mobile Apps"
+  end
 end

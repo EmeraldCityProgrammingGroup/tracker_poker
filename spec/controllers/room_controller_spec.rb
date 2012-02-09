@@ -2,16 +2,16 @@ require 'spec_helper'
 
 describe RoomController do
   before(:each) do 
-    pu = Factory(:pivotal_user)
-    @user = pu.user
+    pivotal_user = Factory(:pivotal_user)
+    @user = pivotal_user.user
     @room = Factory(:room)
     # test << PivotalTracker::Story.new( :id =>11111, :name => "test", :estimate=>-1, :current_state=>"unstarted")
     PivotalTracker::Project.stub(:all).and_return do
       test = []
-      p = PivotalTracker::Project.new
-      p.id = 12345 
-      p.name = "Hello World"
-      test << p
+      project = PivotalTracker::Project.new
+      project.id = 12345 
+      project.name = "Hello World"
+      test << project
       test
     end
   end
@@ -31,6 +31,12 @@ describe RoomController do
     it "should not allow you to join a room if you do not have access to project" do
       post "join", :auth_token => "e59ff97941044f85df5297e1c302d260", :id => @room.id
       response.response_code.should == 403
+      response.body.should == "You do not have access to pivotal project"
+    end
+    it "should not allow a user to join a closed room" do
+      post "join", :auth_token => "e59ff97941044f85df5297e1c302d260", :id => @room.id
+      response.response_code.should == 403
+      response.body.should == "cannot join a closed room"
     end
   end
   describe "POST 'active_story'" do
@@ -54,6 +60,16 @@ describe RoomController do
       response.should be_success
     end
   end
+  
+  describe "GET 'close'" do
+    it "should allow a user to mark a room as closed" do
+      get 'close', :id => @room.id
+      response.body.should == "success"
+      response.response_count.should == 200
+    end
+  end
+    
+  
   # 
   # describe "GET 'create'" do
   #   it "returns http success" do

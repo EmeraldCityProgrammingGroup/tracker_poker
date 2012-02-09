@@ -7,17 +7,29 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-	<div id="topbar">
-    <div class="nav">
-	    <%= link_to "Home", root_path %> |<%= link_to "About", about_path %>|<%= link_to "Contact", contact_path %>
+  <div class='container_16 menu'>
+    
+    <div class="prefix_1 grid_9">
+	    <%= link_to "Home", root_path %> | 
+      <%= link_to "Room", new_room_path %> | 
+      <%= link_to "Play", play_path %> | 
+      <%= link_to "About", about_path %> | 
+      <%= link_to "Contact", contact_path %> | 
+      <%= link_to "Apps", apps_path %>
 	  </div>
-	  <div class="login">
+	  <div class="grid_5">
 		  <%= login_text %>
 	  </div>
-	</div>
+  </div>	
+  <div class='container_16 header'>
+    <div class="grid_7">
+      <h1><%= image_tag "logo.png"%>Tracker Poker</h1>
+    </div>
+  </div>
+  <div class="container_16 content">
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
-  <div class='container_16'>
+  
 <%= yield %>
   </div>
 </body>
