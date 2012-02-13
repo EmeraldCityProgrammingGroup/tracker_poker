@@ -1,12 +1,17 @@
-<div class="grid_15"><h1><%= @project.name %></h1></div>
-<div class="clear"></div>
-<div class="prefix_2 grid_5"><p><%= "Active Stories: #{@active_count}"%></p></div>
-<div class="grid_5"><p><%= "Unestimated Stories: #{@unestimated_count}"%></p></div>
-<div class="clear"></div>
-<div class="prefix_3 grid_4"><%= link_to "Active Stories", room_story_index_path(:room_id => @room.id) %></div>
-<div class="grid_4"><%= link_to "Icebox Stories", icebox_room_story_index_path(:room_id => @room.id) %></div>
-<div class="clear"></div>
-<% @stories.each do |story| %>
-<div class="prefix_1 grid_11"><h2> <%= link_to "#{story.name} (#{story.id})", room_story_path(:id => story.id) %></h2></div>
-<div class="clear"></div>
+<div class="grid_5">
+  <div class="grid_4 button"><%= link_to "Active Stories", room_story_index_path(:room_id => @room.id) %></div>
+  <div class="grid_4 button"><%= link_to "Icebox Stories", icebox_room_story_index_path(:room_id => @room.id) %></div>
+  <div class="grid_4 button"><%= link_to "Back to Room Hub", room_path(:id => @room.id) %></div>
+</div>
+<div class="grid_11">
+
+  <div class="grid_10"><h1><%= @project.name %></h1></div>
+  <div class="clear"></div>
+  <div class="prefix_2 grid_3"><p><%= "Active Stories: #{@active_count}"%></p></div>
+  <div class="grid_3"><p><%= "Unestimated Stories: #{@unestimated_count}"%></p></div>
+  <div class="clear"></div>
+  <% @stories.each do |story| %>
+  <div class="prefix_1 grid_9"><h2> <%= link_to "#{story.name} (#{story.id})", room_story_path(:id => story.id) %></h2></div>
+  <div class="clear"></div>
 <% end %>
+</div>

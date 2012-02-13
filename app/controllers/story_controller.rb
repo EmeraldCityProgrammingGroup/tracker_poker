@@ -36,6 +36,7 @@ class StoryController < PivotalController
   end
   def show
     @project = PivotalTracker::Project.find(Room.find(params[:room_id]).project_id.to_i)
+    @room = Room.find(params[:room_id])
     @story = @project.stories.find(params[:id].to_i)
   end
   

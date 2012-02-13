@@ -1,13 +1,21 @@
-<div class="prefix_1 grid_11"><h2> <%= "#{@story.name} (#{@story.id})" %></h2></div>
-<div class="clear"></div>
-<div class="prefix_2 grid_4"><p><%= "Points: #{@story.estimate}" %></p></div>
-<div class="grid_4"><p><%= "Status: #{@story.current_state}" %></p></div>
-<div class="clear"></div>
-<div class="prefix_2 grid_10"><p><%= "Labels: #{@story.labels}" %></p></div>
-<div class="clear"></div>
-<div class="prefix_2 grid_10"><p><%= @story.description %></p></div>
-<div class="clear"></div>
-<div class="prefix_2 grid_4"><%= link_to "Open Voting", open_voting_room_story_path(:id => @story.id), :remote=> true %></div>
+<div class="grid_5">
+  <div class="grid_4 button"><%= link_to "Active Stories", room_story_index_path(:room_id => @room.id) %></div>
+  <div class="grid_4 button"><%= link_to "Icebox Stories", icebox_room_story_index_path(:room_id => @room.id) %></div>
+  <div class="grid_4 button"><%= link_to "Back to Room Hub", room_path(:id => @room.id) %></div>
+  <div class="grid_4 button"><%= link_to "Open Voting", open_voting_room_story_path(:id => @story.id), :remote=> true %></div>
+</div>
+<div class="grid_11">
+  
+  <div class="grid_9"><h2> <%= "#{@story.name} (#{@story.id})" %></h2></div>
+  <div class="clear"></div>
+  <div class="prefix_1 grid_4"><p><%= "Points: #{@story.estimate}" %></p></div>
+  <div class="grid_4"><p><%= "Status: #{@story.current_state}" %></p></div>
+  <div class="clear"></div>
+  <div class="prefix_1 grid_8"><p><%= "Labels: #{@story.labels}" %></p></div>
+  <div class="clear"></div>
+  <div class="prefix_1 grid_8"><p><%= @story.description.gsub("\n", "<br>").html_safe %></p></div>
+  <div class="clear"></div>
+</div>
 <div id="open_voting">
   <div id="vote_progress"></div>
   <div align="center"><%= link_to "Close Voting", close_voting_room_story_path(:id => @story.id), :remote=> true %></div>
