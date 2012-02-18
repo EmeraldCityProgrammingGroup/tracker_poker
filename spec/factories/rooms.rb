@@ -5,5 +5,6 @@ FactoryGirl.define do
     project_id 12345
     current_story_id -1
     users {|u| [u.association(:user)]}
+    closed false
   end
 end

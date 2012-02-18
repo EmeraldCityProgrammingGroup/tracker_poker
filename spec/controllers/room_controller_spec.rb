@@ -29,14 +29,16 @@ describe RoomController do
     end
     
     it "should not allow you to join a room if you do not have access to project" do
+      pending "Not ready to implement, Question viability of test if more story trackers added."
       post "join", :auth_token => "e59ff97941044f85df5297e1c302d260", :id => @room.id
       response.response_code.should == 403
       response.body.should == "You do not have access to pivotal project"
     end
     it "should not allow a user to join a closed room" do
+      @room = Factory(:room, :closed => true)
       post "join", :auth_token => "e59ff97941044f85df5297e1c302d260", :id => @room.id
       response.response_code.should == 403
-      response.body.should == "cannot join a closed room"
+      response.body.should == "Room Closed"
     end
   end
   describe "POST 'active_story'" do
@@ -62,10 +64,12 @@ describe RoomController do
   end
   
   describe "GET 'close'" do
+    before(:each) do
+      sign_in @user
+    end
     it "should allow a user to mark a room as closed" do
       get 'close', :id => @room.id
-      response.body.should == "success"
-      response.response_count.should == 200
+      response.should redirect_to :new_room
     end
   end
     

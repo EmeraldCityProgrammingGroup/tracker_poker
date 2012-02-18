@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120126051418) do
+ActiveRecord::Schema.define(:version => 20120218163343) do
 
   create_table "pivotal_users", :force => true do |t|
     t.integer  "user_id"
@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(:version => 20120126051418) do
     t.integer  "current_story_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "closed",           :default => false
   end
 
   create_table "rooms_users", :force => true do |t|

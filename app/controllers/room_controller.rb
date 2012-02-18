@@ -36,9 +36,21 @@ class RoomController < PivotalController
   
   def join
     @room = Room.find(params[:id])
-    @room.users << current_user
-    
-    render :text => "success"
+    if @room.closed? 
+      render :text => "Room Closed", :status => 403 
+    elsif @room.users.include?(current_user)
+      render :text => "Already in room", :status => 304
+    else
+      @room.users << current_user
+      render :text => "success"
+    end
+  end
+  
+  def close
+    @room = Room.find(params[:id])
+    @room.closed = true
+    @room.save
+    redirect_to new_room_path, :notice => "Room Closed"
   end
 
 end

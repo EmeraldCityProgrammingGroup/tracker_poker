@@ -27,6 +27,7 @@ TrackerPoker::Application.routes.draw do
     end
     get 'active_story', :on => :member
     get 'join', :on => :member
+    get 'close', :on => :member
   end
   # The priority is based upon order of creation:
   # first created -> highest priority.
