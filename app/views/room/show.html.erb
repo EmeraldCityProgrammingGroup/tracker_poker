@@ -1,6 +1,7 @@
 <div class="grid_5">
   <div class="grid_4 button"><%= link_to "Active Stories", room_story_index_path(:room_id => @room.id) %></div>
   <div class="grid_4 button"><%= link_to "Icebox Stories", icebox_room_story_index_path(:room_id => @room.id) %></div>
+  <div class="grid_4 button"><%= link_to "Close Room", close_room_path(:id => @room.id) %></div>
 </div>
 <div class="grid_11">
   <div class="grid_10"><h1>Room #<%= @room.id%></h1></div>
