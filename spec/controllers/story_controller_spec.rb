@@ -119,7 +119,9 @@ describe StoryController do
       sign_in @user
       3.times do |x|
         user_x = Factory(:user, :authentication_token =>Digest::MD5.hexdigest("User #{x}\n"))
-        post "vote", :auth_token => user_x.authentication_token, :score => x, :room_id => @room.id, :id=> @story.id
+        #puts "#{user_x.email} token: #{user_x.authentication_token }"
+        #post "vote", :auth_token => user_x.authentication_token, :score => x, :room_id => @room.id, :id=> @story.id
+        StoryVote.create(:user_id => user_x.id, :room_id =>@room.id, :story_id => @story.id, :score => x)
       end
     end
     it "should list all votes for a given story" do 

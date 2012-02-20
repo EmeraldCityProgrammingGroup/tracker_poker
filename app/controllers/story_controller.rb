@@ -42,7 +42,12 @@ class StoryController < PivotalController
   
   def vote
     @room = Room.find(params[:room_id])
-    @room.story_votes.create(:user_id => current_user.id, :story_id => params[:id], :score => params[:score])
+    vote = @room.story_votes.where(:user_id => current_user.id, :story_id => params[:id]).first
+    if vote.nil?
+      vote = @room.story_votes.create(:user_id => current_user.id, :story_id => params[:id], :score => params[:score])
+    else
+      vote.update_attributes :score => params[:score]
+    end
     render :text => "success"
   end
   
