@@ -27,8 +27,21 @@
     </div>
   </div>
   <div class="container_16 content">
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
+  <% if notice %>
+    <p class="ui-state-highlight ui-corner-all">
+      <span class="ui-icon ui-icon-info" style="float: left; margin-right: .3em;"></span>
+      <%= notice %>
+    </p>
+  <% end %>
+  <% if alert %>
+  <div class="ui-state-error ui-corner-all" style="padding: 0 .7em;">
+    <p>
+      <span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span>
+      <strong>Alert:</strong>
+      <%= alert %>
+    </p>
+  </div>
+  <% end %>
   
 <%= yield %>
   </div>
